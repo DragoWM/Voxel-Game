@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+//basic block structure definition.
+//will definitely be refactored once I get around to looking at block variations.
 public abstract class BlockBase
 {
     public bool isSolid { get; set; }
