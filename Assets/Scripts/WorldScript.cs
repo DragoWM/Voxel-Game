@@ -8,6 +8,10 @@ public class WorldScript : MonoBehaviour
     private TerrainGenerationBase terrainGenerator;
     private TerrainRendererBase terrainRenderer;
 
+    public int chunkSizeX;
+    public int chunkSizeY;
+    public int chunkSizeZ;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +25,11 @@ public class WorldScript : MonoBehaviour
             return;
         }
 
-        terrainGenerator.GenerateTerrainData();
+        terrainGenerator.GenerateTerrainData(chunkSizeX, chunkSizeY, chunkSizeZ);
 
         //render terrain
-        terrainRenderer.renderTerrain();
+        terrainRenderer.blockList = blockList;
+        terrainRenderer.renderTerrain(terrainGenerator.terrainData, new Vector3Int(chunkSizeX, chunkSizeY, chunkSizeZ));
 
     }
 
