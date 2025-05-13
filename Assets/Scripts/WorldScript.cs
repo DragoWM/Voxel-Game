@@ -8,9 +8,9 @@ public class WorldScript : MonoBehaviour
     private TerrainGenerationBase terrainGenerator;
     private TerrainRendererBase terrainRenderer;
 
-    public int chunkSizeX;
-    public int chunkSizeY;
-    public int chunkSizeZ;
+    [SerializeField] public int chunkSizeX;
+    [SerializeField] public int chunkSizeY;
+    [SerializeField] public int chunkSizeZ;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +19,8 @@ public class WorldScript : MonoBehaviour
         getScriptReferences();
 
         //generate terrain
-        if (terrainGenerator == null)
-        {
-            Debug.Log("Terrain Gen Missing!");
-            return;
-        }
-
         terrainGenerator.GenerateTerrainData(chunkSizeX, chunkSizeY, chunkSizeZ);
+        terrainGenerator.debugLogTerrainData();
 
         //render terrain
         terrainRenderer.blockList = blockList;

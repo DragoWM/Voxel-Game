@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 
 public class DebugTerrainGen : TerrainGenerationBase
 {
-    public new Dictionary<Vector3Int, int> terrainData = new Dictionary<Vector3Int, int>();
     private int dimX;
     private int dimY;
     private int dimZ;
@@ -17,6 +16,8 @@ public class DebugTerrainGen : TerrainGenerationBase
         this.dimZ = dimZ;
 
         System.Random rnd = new System.Random();
+
+        terrainData = new Dictionary<Vector3Int, int>();
 
         for (int x = 0; x < dimX; x++)
         {
@@ -38,7 +39,7 @@ public class DebugTerrainGen : TerrainGenerationBase
             {
                 for (int z = 0; z < dimZ; z++)
                 {
-                    Debug.Log(dimX.ToString() + dimY.ToString() + dimZ.ToString() + terrainData[new Vector3Int(x, y, z)].ToString());
+                    Debug.Log(x.ToString() + y.ToString() + z.ToString() + terrainData[new Vector3Int(x, y, z)].ToString());
                 }
             }
         }
