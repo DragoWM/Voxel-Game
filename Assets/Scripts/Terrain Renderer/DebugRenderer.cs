@@ -7,7 +7,7 @@ public class DebugRenderer : TerrainRendererBase
 {
     public GameObject cube;
 
-    public override void renderTerrain(Dictionary<Vector3Int, int> terrainData, Vector3Int chunkDim)
+    public override void renderTerrain(Dictionary<Vector3Int, string> terrainData, Vector3Int chunkDim)
     {
         for (int x = 0; x < chunkDim.x; x++)
         {
@@ -15,7 +15,7 @@ public class DebugRenderer : TerrainRendererBase
             {
                 for (int z = 0; z < chunkDim.z; z++)
                 {
-                    if (terrainData[new Vector3Int(x, y, z)] == 1); {
+                    if (blockRegister.blockList[terrainData[new Vector3Int(x, y, z)]].isSolid == true) {
                         Instantiate(cube, new Vector3(x, y, z), Quaternion.identity);
                     }
                 }
