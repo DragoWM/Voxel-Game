@@ -17,7 +17,7 @@ public class DebugTerrainGen : TerrainGenerationBase
 
         System.Random rnd = new System.Random();
 
-        terrainData = new Dictionary<Vector3Int, int>();
+        terrainData = new Dictionary<Vector3Int, string>();
 
         for (int x = 0; x < dimX; x++)
         {
@@ -25,7 +25,12 @@ public class DebugTerrainGen : TerrainGenerationBase
             {
                 for (int z = 0; z < dimZ; z++)
                 {
-                    terrainData.Add(new Vector3Int(x, y, z), rnd.Next(0,2));
+                    int solid = rnd.Next(0, 2);
+
+                    if (solid == 1)
+                        terrainData.Add(new Vector3Int(x, y, z), "stone");
+                    else
+                        terrainData.Add(new Vector3Int(x, y, z), "air");
                 }
             }
         }

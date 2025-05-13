@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WorldScript : MonoBehaviour
 {
-    private BlockRegister blockList;
+    private BlockRegister blockRegister;
     private TerrainGenerationBase terrainGenerator;
     private TerrainRendererBase terrainRenderer;
 
@@ -19,11 +19,12 @@ public class WorldScript : MonoBehaviour
         getScriptReferences();
 
         //generate terrain
+        terrainGenerator.blockRegister = blockRegister;
         terrainGenerator.GenerateTerrainData(chunkSizeX, chunkSizeY, chunkSizeZ);
         terrainGenerator.debugLogTerrainData();
 
         //render terrain
-        terrainRenderer.blockList = blockList;
+        terrainRenderer.blockRegister = blockRegister;
         terrainRenderer.renderTerrain(terrainGenerator.terrainData, new Vector3Int(chunkSizeX, chunkSizeY, chunkSizeZ));
 
     }
@@ -35,7 +36,7 @@ public class WorldScript : MonoBehaviour
         Transform child = transform.Find("BlockRegister");
         if (child != null)
         {
-            blockList = child.GetComponent<BlockRegister>();
+            blockRegister = child.GetComponent<BlockRegister>();
         }
 
         //Terrain generator generates the terrain and stores the data into the world script
