@@ -207,7 +207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 702971711}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5461497b6f139546bde1b4c375a3ee5, type: 3}
+  m_Script: {fileID: 11500000, guid: de785ceaba13db64a9b9a44886c0c8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blockRegister: {fileID: 0}
@@ -494,9 +494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9420581881efdeb4888c721d874c00a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkSizeX: 256
+  chunkSizeX: 64
   chunkSizeY: 32
-  chunkSizeZ: 256
+  chunkSizeZ: 64
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
