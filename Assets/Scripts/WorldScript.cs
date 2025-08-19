@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class WorldScript : MonoBehaviour
 {
-    private BlockRegister blockList;
+    private BlockRegister blockRegister;
     private TerrainGenerationBase terrainGenerator;
     private TerrainRendererBase terrainRenderer;
+
+    [SerializeField] public int chunkSizeX;
+    [SerializeField] public int chunkSizeY;
+    [SerializeField] public int chunkSizeZ;
 
     // Start is called before the first frame update
     void Start()
@@ -15,16 +19,13 @@ public class WorldScript : MonoBehaviour
         getScriptReferences();
 
         //generate terrain
-        if (terrainGenerator == null)
-        {
-            Debug.Log("Terrain Gen Missing!");
-            return;
-        }
-
-        terrainGenerator.GenerateTerrainData();
+        terrainGenerator.blockRegister = blockRegister;
+        terrainGenerator.GenerateTerrainData(chunkSizeX, chunkSizeY, chunkSizeZ);
+        terrainGenerator.debugLogTerrainData();
 
         //render terrain
-        terrainRenderer.renderTerrain();
+        terrainRenderer.blockRegister = blockRegister;
+        terrainRenderer.renderTerrain(terrainGenerator.terrainData, new Vector3Int(chunkSizeX, chunkSizeY, chunkSizeZ));
 
     }
 
@@ -35,7 +36,7 @@ public class WorldScript : MonoBehaviour
         Transform child = transform.Find("BlockRegister");
         if (child != null)
         {
-            blockList = child.GetComponent<BlockRegister>();
+            blockRegister = child.GetComponent<BlockRegister>();
         }
 
         //Terrain generator generates the terrain and stores the data into the world script

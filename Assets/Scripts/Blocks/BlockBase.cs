@@ -3,7 +3,7 @@
 public abstract class BlockBase
 {
     public bool isSolid { get; set; }
-    public string name { get; set; }
+    public string displayName { get; set; }
 }
 
 public class BasicBlock : BlockBase

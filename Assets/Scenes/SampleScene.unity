@@ -210,6 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5461497b6f139546bde1b4c375a3ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockRegister: {fileID: 0}
+  cube: {fileID: 182727768697462462, guid: e22e138fe7ea52b4887b22d84143f052, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,9 +439,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1090840541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20bcc55064de2ab4fa22937b970413f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e5b79791104bcd4fb9e68663aa4048a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockRegister: {fileID: 0}
+  scale: 60
+  octaves: 6
+  persistence: 0.23
+  lacunarity: 3
 --- !u!1 &1600165524
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9420581881efdeb4888c721d874c00a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chunkSizeX: 256
+  chunkSizeY: 32
+  chunkSizeZ: 256
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -8,30 +8,30 @@ public class BlockRegister : MonoBehaviour
     // dictionary that works off of a simple int as the ID and stores the custom BlockBase object
     // int as the ID may be replaced in the future by int2,int3 or a float to make block variations/rotations easier to store
     // will be refactored when adding block variations.
-    public Dictionary<int, BlockBase> blockList = new Dictionary<int, BlockBase>();
+    public Dictionary<string, BlockBase> blockList = new Dictionary<string, BlockBase>();
 
     void Start()
     {
         //register all block types, with their properties.
         //will need to be refactored in the future, by loading data from a file for easier maintainence.
-        registerBlock(-1, false, "Error");
-        registerBlock(0, false, "Air");
-        registerBlock(1, true, "Stone");
+        registerBlock("error", false, "Error");
+        registerBlock("air", false, "Air");
+        registerBlock("stone", true, "Stone");
     }
 
-    private void registerBlock(int id, bool isSolid, string name)
+    private void registerBlock(string id, bool isSolid, string name)
     {
         //create block instance
         BasicBlock block = new BasicBlock();
 
         //assign variables
         block.isSolid = isSolid;
-        block.name = name;
+        block.displayName = name;
 
         //check if id is already assigned
         if (blockList.ContainsKey(id)) //cant assign block with identical id
         {
-            Debug.Log("Key already exists. Cant register " + block.name);
+            Debug.Log("Key already exists. Cant register " + id);
         } else
         {
             //add block to dictionary
@@ -40,7 +40,7 @@ public class BlockRegister : MonoBehaviour
     }
 
     //basic function to return block instance
-    public BlockBase returnBlock(int id)
+    public BlockBase returnBlock(string id)
     {
         BlockBase block = blockList[id];
 
