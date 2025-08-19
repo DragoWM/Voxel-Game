@@ -12,6 +12,8 @@ public class WorldScript : MonoBehaviour
     [SerializeField] public int chunkSizeY;
     [SerializeField] public int chunkSizeZ;
 
+    public GameObject worldObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +23,11 @@ public class WorldScript : MonoBehaviour
         //generate terrain
         terrainGenerator.blockRegister = blockRegister;
         terrainGenerator.GenerateTerrainData(chunkSizeX, chunkSizeY, chunkSizeZ);
-        terrainGenerator.debugLogTerrainData();
+        //terrainGenerator.debugLogTerrainData();
 
         //render terrain
         terrainRenderer.blockRegister = blockRegister;
+        terrainRenderer.worldObj = this.worldObj;
         terrainRenderer.renderTerrain(terrainGenerator.terrainData, new Vector3Int(chunkSizeX, chunkSizeY, chunkSizeZ));
 
     }

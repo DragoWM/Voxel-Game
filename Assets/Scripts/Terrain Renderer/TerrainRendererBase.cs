@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class TerrainRendererBase : MonoBehaviour
 {
     public BlockRegister blockRegister;
+    public GameObject worldObj;
     public abstract void renderTerrain(Dictionary<Vector3Int, string> terrainData, Vector3Int chunkDim);
 }
 

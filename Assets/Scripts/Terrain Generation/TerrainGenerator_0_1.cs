@@ -94,7 +94,7 @@ public class TerrainGenerator_0_1 : TerrainGenerationBase
 
                 for (int y = 0; y <= dimY; y++)
                 {
-                    if (y <= height && y >= height - 3)
+                    if (y <= height)
                         this.terrainData[new Vector3Int(x, y, z)] = "stone";
                     else
                         this.terrainData[new Vector3Int(x, y, z)] = "air";
