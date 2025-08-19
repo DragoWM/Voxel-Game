@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class TerrainGenerator_0_1 : TerrainGenerationBase
 {
@@ -16,6 +16,9 @@ public class TerrainGenerator_0_1 : TerrainGenerationBase
     public float persistence; // Amplitute reduction per layer
     public float lacunarity;  // Frequency increase per layer
 
+    public RawImage debugHeightMap;
+    public RawImage debugHeightMapNormalized;
+
     public override void GenerateTerrainData(int dimX, int dimY, int dimZ)
     {
         this.dimX = dimX;
@@ -29,8 +32,40 @@ public class TerrainGenerator_0_1 : TerrainGenerationBase
         terrainData = new Dictionary<Vector3Int, string>();
 
         generateHeightMap();
+
+        debugMap(this.debugHeightMap);
+
         normalizeHeightMap();
-        calculateTerrainData();
+
+        debugMap(this.debugHeightMapNormalized);
+
+        //calculateTerrainData();
+    }
+
+    void debugMap(RawImage imgObject)
+    {
+
+        Color[] pixels = new Color[dimX * dimZ];
+        int i = 0;
+
+        for (int x = 0; x < dimX; x++)
+        {
+            for (int z = 0; z < dimZ; z++)
+            {
+                pixels[i] = Color.Lerp(Color.green, Color.red, heightMap[x, z]);
+
+                i++;
+            }
+        }
+
+        Texture2D tex = new Texture2D(dimX , dimZ);
+        tex.SetPixels(pixels);
+        tex.filterMode = FilterMode.Point;
+
+        tex.Apply();
+
+        imgObject.texture = tex;
+
     }
 
     private void generateHeightMap()
@@ -92,7 +127,7 @@ public class TerrainGenerator_0_1 : TerrainGenerationBase
             {
                 int height = Mathf.FloorToInt(heightMap[x, z] * dimY);
 
-                for (int y = 0; y <= dimY; y++)
+                for (int y = 0; y < dimY; y++)
                 {
                     if (y <= height)
                         this.terrainData[new Vector3Int(x, y, z)] = "stone";

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WorldScript : MonoBehaviour
@@ -26,10 +27,18 @@ public class WorldScript : MonoBehaviour
         //terrainGenerator.debugLogTerrainData();
 
         //render terrain
-        terrainRenderer.blockRegister = blockRegister;
-        terrainRenderer.worldObj = this.worldObj;
-        terrainRenderer.renderTerrain(terrainGenerator.terrainData, new Vector3Int(chunkSizeX, chunkSizeY, chunkSizeZ));
+        //terrainRenderer.blockRegister = blockRegister;
+        //terrainRenderer.worldObj = this.worldObj;
+        //terrainRenderer.renderTerrain(terrainGenerator.terrainData, new Vector3Int(chunkSizeX, chunkSizeY, chunkSizeZ));
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            terrainGenerator.GenerateTerrainData(chunkSizeX, chunkSizeY, chunkSizeZ);
+        }
     }
 
     void getScriptReferences()
