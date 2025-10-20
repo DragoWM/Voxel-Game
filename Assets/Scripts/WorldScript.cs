@@ -27,9 +27,9 @@ public class WorldScript : MonoBehaviour
         //terrainGenerator.debugLogTerrainData();
 
         //render terrain
-        //terrainRenderer.blockRegister = blockRegister;
-        //terrainRenderer.worldObj = this.worldObj;
-        //terrainRenderer.renderTerrain(terrainGenerator.terrainData, new Vector3Int(chunkSizeX, chunkSizeY, chunkSizeZ));
+        terrainRenderer.blockRegister = blockRegister;
+        terrainRenderer.worldObj = this.worldObj;
+        terrainRenderer.renderTerrain(terrainGenerator.terrainData, new Vector3Int(chunkSizeX, chunkSizeY, chunkSizeZ));
 
     }
 

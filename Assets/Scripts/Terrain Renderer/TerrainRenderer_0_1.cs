@@ -18,15 +18,17 @@ public class TerrainRenderer_0_1 : TerrainRendererBase
     {
         Vector3Int[] neighbourDir =
         {
-            new Vector3Int (-1,0,0),
-            new Vector3Int (1,0,0),
-            new Vector3Int (0,-1,0),
-            new Vector3Int (0,1,0),
-            new Vector3Int (0,0,-1),
-            new Vector3Int (0,0,1)
+            new Vector3Int (-1,0,0), //left
+            new Vector3Int (1,0,0),  //right
+            new Vector3Int (0,-1,0), //down
+            new Vector3Int (0,1,0), //up
+            new Vector3Int (0,0,-1), // F/B
+            new Vector3Int (0,0,1)   // F/B
         };
 
         //Debug.Log(dimensions.x + "," + dimensions.y + "," + dimensions.z);
+
+
 
         List<Vector3> Vertices = new List<Vector3>();
         List<int> Triangles = new List<int>();
@@ -82,9 +84,14 @@ public class TerrainRenderer_0_1 : TerrainRendererBase
                                 {
                                     AddQuad(faceVertices[n] , Vertices.Count, currentPosition);
                                 }
+
                             } catch
                             {
-                                //AddQuad(faceVertices[n], Vertices.Count, currentPosition);
+                                //if at the top, still render face
+                                if (chunkDim.y - 1 <= currentPosition[1])  {
+                                    AddQuad(faceVertices[n], Vertices.Count, currentPosition);
+                                }
+
                             }
                         }
                         /*
@@ -192,4 +199,5 @@ public class TerrainRenderer_0_1 : TerrainRendererBase
         }
     }
 }
+
 

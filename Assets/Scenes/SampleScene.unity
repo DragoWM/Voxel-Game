@@ -590,8 +590,8 @@ MonoBehaviour:
   blockRegister: {fileID: 0}
   scale: 100
   octaves: 4
-  persistence: 0.1
-  lacunarity: 2.5
+  persistence: 0.4
+  lacunarity: 2
   debugHeightMap: {fileID: 690824187}
   debugHeightMapNormalized: {fileID: 494866665}
 --- !u!1 &1600165524
@@ -604,8 +604,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1600165526}
   - component: {fileID: 1600165528}
-  - component: {fileID: 1600165530}
   - component: {fileID: 1600165529}
+  - component: {fileID: 1600165530}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkSizeX: 32
-  chunkSizeY: 256
+  chunkSizeY: 128
   chunkSizeZ: 32
   worldObj: {fileID: 1600165524}
 --- !u!23 &1600165529
@@ -831,7 +831,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132570308}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}

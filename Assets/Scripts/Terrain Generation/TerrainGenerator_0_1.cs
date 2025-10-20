@@ -33,13 +33,13 @@ public class TerrainGenerator_0_1 : TerrainGenerationBase
 
         generateHeightMap();
 
-        debugMap(this.debugHeightMap);
+        //debugMap(this.debugHeightMap);
 
         normalizeHeightMap();
 
-        debugMap(this.debugHeightMapNormalized);
+        //debugMap(this.debugHeightMapNormalized);
 
-        //calculateTerrainData();
+        calculateTerrainData();
     }
 
     void debugMap(RawImage imgObject)
